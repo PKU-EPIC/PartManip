@@ -2,7 +2,7 @@
   <b>PartManip: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations</b>
 
   <b><i>CVPR 2023</i></b>
-</h2>
+
 
 <div align="center">
     <a href="https://cvpr.thecvf.com/virtual/2023/poster/22553" target="_blank">
@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/Page-PartManip-blue" alt="Project Page"/></a>
 </div>
 
-
+</h2>
 
 This is the official repository of [**PartManip: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations**](https://arxiv.org/abs/2303.16958).
 
