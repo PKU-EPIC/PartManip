@@ -5,12 +5,12 @@
 </h2>
 
 <div align="center">
+    <a href="https://cvpr.thecvf.com/virtual/2023/poster/22553" target="_blank">
+    <img src="https://img.shields.io/badge/CVPR 2023-Conference Paper-red" alt="PyTorch"/></a>
     <a href="https://arxiv.org/abs/2303.16958" target="_blank">
     <img src="https://img.shields.io/badge/Paper-arXiv-green" alt="Paper arXiv"></a>
     <a href="https://pku-epic.github.io/PartManip/" target="_blank">
-    <img src="https://img.shields.io/badge/Page-GAPartNet-9cf" alt="Project Page"/></a>
-    <a href="https://pytorch.org" target="_blank">
-    <img src="https://img.shields.io/badge/Code-PyTorch-blue" alt="PyTorch"/></a>
+    <img src="https://img.shields.io/badge/Page-PartManip-blue" alt="Project Page"/></a>
 </div>
 
 
