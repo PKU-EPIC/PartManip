@@ -1,8 +1,17 @@
 <h2 align="center">
   <b>PartManip: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations</b>
 
-  <b>CVPR 2023</b>
+  <b><i>CVPR 2023</i></b>
 </h2>
+
+<div align="center">
+    <a href="https://arxiv.org/abs/2303.16958" target="_blank">
+    <img src="https://img.shields.io/badge/Paper-arXiv-green" alt="Paper arXiv"></a>
+    <a href="https://pku-epic.github.io/PartManip/" target="_blank">
+    <img src="https://img.shields.io/badge/Page-GAPartNet-9cf" alt="Project Page"/></a>
+    <a href="https://pytorch.org" target="_blank">
+    <img src="https://img.shields.io/badge/Code-PyTorch-blue" alt="PyTorch"/></a>
+</div>
 
 
 
