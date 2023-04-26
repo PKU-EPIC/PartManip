@@ -1,4 +1,11 @@
-# [CVPR 2023] PartManip: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations
+<h2 align="center">
+  <b><tt>PartManip</tt>: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations</b>
+</h2>
+
+<h2 align="center">
+  <b>CVPR 2023</b>
+</h2>
+
 
 This is the official repository of [**PartManip: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations**](https://arxiv.org/abs/2303.16958).
 
@@ -9,10 +16,10 @@ If you find our work useful in your research, please consider citing:
 
 ```
 @article{geng2023partmanip,
- title={PartManip: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations},
- author={Geng, Haoran and Li, Ziming and Geng, Yiran and Chen, Jiayi and Dong, Hao and Wang, He},
- journal={arXiv preprint arXiv:2303.16958},
- year={2023}
+    title={PartManip: Learning Cross-Category Generalizable Part Manipulation Policy from Point Cloud Observations},
+    author={Geng, Haoran and Li, Ziming and Geng, Yiran and Chen, Jiayi and Dong, Hao and Wang, He},
+    journal={arXiv preprint arXiv:2303.16958},
+    year={2023}
 }
 ```
 
