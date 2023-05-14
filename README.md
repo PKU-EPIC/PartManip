@@ -19,6 +19,13 @@ This is the official repository of [**PartManip: Learning Cross-Category General
 
 For more information, please visit our [**project page**](https://pku-epic.github.io/PartManip/).
 
+## Overview
+![overview](imgs/teaser.jpg)
+We introduce a large-scale cross-category part manipulation benchmark PartManip with diverse object datasets, realistic settings, and rich annotations. We propose a generalizable vision-based policy learning strategy and boost the performance of part-based object manipulation by a large margin, which can generalize to unseen object categories and novel objects in the real world.
+
+![pipeline](imgs/pipeline.jpg)
+We first train state-based expert policy using our proposed canonicalization to the part coordinate frame and the part-aware reward. We then use the learned expert to collect demonstrations for pre-training the vision-based policy by behavior cloning. After pre-training, we train the vision-based policy to imitate the state-based expert policy using DAgger. We also introduce several point cloud augmentation techniques to boost the generalization ability. For the vision backbone, we introduce 3D Sparse-UNet which has a large expression capability. Furthermore, we introduced an extra domain adversarial learning module for better cross-category generalization.
+
 ## How to use our code
 
 ### Installation
@@ -68,6 +75,14 @@ python gym/train.py --task=FrankaPoseCabinetBase --algo=pregrasp_ppo \
 --action_normalization clip --control ik_abs_axis_angle --asset_num 200_40_40_5 \
 --test --ckpt xxxx.ckpt
 ```
+
+### Training Curve
+There are some examples of our tested training curves:
+
+![Training Curve for Drawer](imgs/drawer.jpg)
+
+![Training Curve for Door](imgs/door.jpg)
+
 
 ## Citation
 If you find our work useful in your research, please consider citing:
