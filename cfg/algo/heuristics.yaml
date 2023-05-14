@@ -1,0 +1,15 @@
+seed: -1
+useGtBbox: True
+eval:
+  iterations: 100
+
+perception_model:
+  class_path: perception.models.pointgroup.PointGroup
+  ckpt_pth: ckpt/epoch_210_miou_70.98.ckpt
+  device: cuda:0
+  num_classes: 4
+  in_channels: 6
+  channels: [16, 64, 112] # [16, 32, 48, 64, 80, 96, 112]
+  freeze: False
+policy:
+  use_pc: True

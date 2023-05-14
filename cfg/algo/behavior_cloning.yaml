@@ -1,0 +1,113 @@
+# 0708 work version
+seed: -1
+
+clip_observations: 5.0
+clip_actions: 3.0
+clip_relative_actions: 0.5
+
+policy: # only works for MlpPolicy right now
+  pi_hid_sizes: [512, 512, 64]
+  vf_hid_sizes: [512, 512, 64]
+  activation: elu # can be elu, relu, selu, crelu, lrelu, tanh, sigmoid
+  feature_dim: 112
+  network_type: New
+  data_parallel: True
+  use_orthogonal_init : True    ###trick 8
+  use_pc: True
+  use_spconv: True
+  use_pretrain: True 
+  disc_reward_perportion: 0
+  use_self_imitation: True
+  use_expert: False
+  max_batch: 100
+  demo_num: 2
+
+  task_meta: 
+    state_dim: 16
+    mask_dim: 4 # R, G, B, SEG,  #handle, part, gripper
+  Spconv: 
+    class_path: perception.models.backbone.PointGroup
+    ckpt_pth: /data2/haoran/RL-Pose/PoseOrientedGym/ckpt/epoch_210_miou_70.98.ckpt
+    device: None  
+    freeze: False
+
+  use_boundingbox: False
+  canonicalize: False
+  canon_space: handle
+  use_residual_traj: False
+
+expert_policy: # only works for MlpPolicy right now
+  pi_hid_sizes: [512, 512, 64]
+  vf_hid_sizes: [512, 512, 64]
+  activation: elu # can be elu, relu, selu, crelu, lrelu, tanh, sigmoid
+  feature_dim: 112
+  network_type: New
+  data_parallel: True
+  use_orthogonal_init : True    ###trick 8
+  task_meta: 
+    state_dim: 56
+    mask_dim: 4 # R, G, B, SEG,  #handle, part, gripper
+
+  use_boundingbox: True
+  canonicalize: True
+  canon_space: handle
+  use_residual_traj: False
+
+  expert_path: /data2/ziming/RL-Pose/PoseOrientedGym/logs/FrankaPoseCabinetBase_pregrasp_ppo/ppo_open_pregrasp_new/0825_200door_slider_pregrasp1_canon_algo-seed-1/model_700.tar
+
+discriminator:
+  hid_sizes: [512, 128, 32]
+  activation: tanh
+  use_bn: False
+  task_meta: 
+    state_dim: 56
+  lr: 0.0003
+  disc_momentum: 0.2
+  update_freq: 200
+  use_feature: False
+  use_gt_obs: True
+  rew_clip_magnitude: 5
+
+
+learn:
+  agent_name: franka
+  test: False
+  resume: 0
+  save_interval: 50 # check for potential saves every this many iterations
+  checkpoint: -1
+  #checkpoint_path: /data2/ziming/RL-Pose/MyGym/logs/FrankaCabinet/ppo_1000021-8,mini=4_door0.05_reward0_seed9999/model_1600.tar
+  eval_round: 2
+  eval_freq: 50
+  print_log: True
+
+  # rollout params
+  max_iterations: 20000
+
+  # training params
+  cliprange: 0.1  #!
+  ent_coef: 0.01  #!
+  nsteps: 200
+  noptepochs: 8  #每次update多少个epoch !
+  nminibatches: 16 # this is per agent,就是一共多少个mini batch  !
+
+  optim_stepsize: 3.e-4 # 3e-4 is default for single agent training with constant schedule
+  schedule: adaptive # could be adaptive or linear or fixed !
+  desired_kl: 0.01 ### trick 0, use KL or not !
+  lr_upper: 1e-3
+  lr_lower: 1e-7
+  gamma: 0.99
+  lam: 0.95
+  init_noise_std: 1
+
+  log_interval: 1
+  asymmetric: False
+
+  use_adv_norm : True        ### trick 1 
+  adv_norm_epsilon: 1.e-8
+  use_state_norm: False     ### trick 2 
+  use_reward_norm: False        ### trick 3
+  use_reward_scaling: False   ### trick 4
+  learning_rate_decay : True   ### trick 6 !
+  use_grad_clip : True          ###trick 7 !
+  max_grad_norm: 0.5                          #!
+  adam_epsilon : 1.e-5           ### trick 9 !

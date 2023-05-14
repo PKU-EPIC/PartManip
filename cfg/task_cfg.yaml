@@ -1,0 +1,135 @@
+debug: False # used to indicate whether to use debug mode: print info no use wandb
+save_video: False
+save_video_root: "/data2/ziming/video"
+use_general_camera: False
+
+log:
+  save_name: test
+  group_name: test
+  use_wandb: True
+
+obs:
+  use_pc: True
+  pose_baseline: no
+  state:
+    use_robot_qpose: True # 22
+    use_cabinet_qpose: False # 2
+    use_cabinet_bbox: False # 48 / 24
+    # use_cabinet_qpose: True # 2
+    # use_cabinet_bbox: True # 48 / 24
+    use_bbox_type: gt # gt pt None
+    use_bbox_form: edges # vertex edges
+    use_hand_root_pose: True # spacing
+    use_part_center: True # 3
+    use_noise_feature: False
+
+  pc:
+    use_pseudo_pc: False
+    pre_random_sample_num: 8000
+    pcDownSampleNum: 4000
+    # pre_random_sample_num: 40000
+    # pcDownSampleNum: 20000
+    z_p_bar: 3.0
+    z_n_bar: 0.5
+    x_p_bar: -0.3
+    x_n_bar: -1.5
+    y_p_bar: 1.5
+    y_n_bar: -1.5
+    visualizePointcloud: True
+    depth_bar: 5
+    map_dis_bar: 0.1
+    pointFeatureDim: 112
+    pseudo_pc_root: assets/pc_4000
+    numPCObservations: 6
+
+inference:
+  perception_model:
+    class_path: perception.models.pointgroup.PointGroup
+    ckpt_pth: ckpt/epoch_210_miou_70.98.ckpt
+    device: cuda:0
+    num_classes: 4
+    in_channels: 6
+    channels: [16, 64, 112] # [16, 32, 48, 64, 80, 96, 112]
+    freeze: False
+
+task:
+  randomize: False
+  target_state: open
+  target_part_category: door # door or drawer
+  task: open
+  openProportion: 0.53
+  target_part_initial_open_proportion: 0.53
+  use_new_dist_rwd: True
+  use_soft_dist: True
+  use_finger_dist: True
+  # use_bbox: False    ##### 3*8 bbox input or 12D bbox input  
+  two_stage: True
+  grasp_first: False ####reward
+  pregrasp_steps: 1500
+  pregrasp_type: None # part or handle or None
+  use_part_pregrasp: False
+  # use_qpose_state: False
+  use_first_bbox: gt  #pt or gt or None for canonicalize
+  use_fixed_feature: False
+  
+  canonicalize: False
+  canon_space: handle
+
+  rot_coef: 0.2
+  handle_coef: 2
+  vel_coef: 0
+  dist_coef: 1
+  tip_coef: 0
+  close_coef: 0
+  dicouple_coef: 1
+
+env:
+  use_asset_with_demo: False
+  env_name: base_env
+  driveMode: "ik_abs" #pos, effort, maniskill ik, ik_abs, ik_rela
+  maxEpisodeLength: 200
+  AssetNumTrain: 0
+  AssetNumValIntra: 0
+  AssetNumValInter: 0
+  EnvPerAsset: 2
+  enableCameraSensors: False
+  single_camera: False
+  usePartRecoverForce: False
+  robotName: FrankaSlider_newtips
+  franka_scale: 2
+  envSpacing: 3.0
+  use_easy_data: False
+  # useGtBbox: True
+  usePreGraspPose: True
+  action_normalization: tanh
+  # driveMode: "maniksill" # option "pos" "effort" "ik"
+
+  asset:
+    assetRoot: assets
+    randomAsset: False
+    new_setting: False
+    robot:
+
+      Frankafixed:
+        filePath: franka_description/robots/franka_panda.urdf
+        numActions: 9
+        ikNumActions: 9
+      FrankaSlider:
+        filePath: franka_description/robots/franka_panda_slider.urdf
+        numActions: 11
+        ikNumActions: 9
+      Frankafixed_newtips:
+        filePath: franka_description/robots/franka_panda_new.urdf
+        numActions: 9
+        ikNumActions: 9
+      FrankaSlider_newtips:
+        filePath: franka_description/robots/franka_panda_slider_new.urdf
+        numActions: 11
+        ikNumActions: 9
+      FrankaSliderXYZ:
+        filePath: franka_description/robots/franka_panda_slider_z.urdf
+        numActions: 12
+        ikNumActions: 9
+
+    result:
+      total: 0 # no use

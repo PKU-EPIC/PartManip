@@ -1,3 +1,28 @@
+assets/
+ckpt/
+# gym/
+unused/
+assets_/
+__pycache__/
+**/__pycache__/
+**/__pycache__
+ManiSkill/
+ManiSkill-Learn/
+isaacgym/
+*_raw*
+raw*
+assets*
+*.zip
+v-hacd/
+expert_data/
+*.tar
+*.out
+*.err
+.slurm
+logs
+wandb
+*.sif
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
