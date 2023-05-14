@@ -79,7 +79,11 @@ python gym/train.py --task=FrankaPoseCabinetBase --algo=pregrasp_ppo \
 ### Training Curve
 There are some examples of our tested training curves:
 
+A training example of drawer:
+
 ![Training Curve for Drawer](imgs/drawer.jpg)
+
+A training example of door:
 
 ![Training Curve for Door](imgs/door.jpg)
 
