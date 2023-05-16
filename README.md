@@ -26,6 +26,9 @@ We introduce a large-scale cross-category part manipulation benchmark PartManip 
 ![pipeline](imgs/pipeline.jpg)
 We first train state-based expert policy using our proposed canonicalization to the part coordinate frame and the part-aware reward. We then use the learned expert to collect demonstrations for pre-training the vision-based policy by behavior cloning. After pre-training, we train the vision-based policy to imitate the state-based expert policy using DAgger. We also introduce several point cloud augmentation techniques to boost the generalization ability. For the vision backbone, we introduce 3D Sparse-UNet which has a large expression capability. Furthermore, we introduced an extra domain adversarial learning module for better cross-category generalization.
 
+## Dataset & Assets
+To obtain our assets, please fill out [this form](https://forms.gle/DqdPvLE6pNWZf2XR8) and check the Terms&Conditions in it. Please cite our paper if you use our dataset.
+
 ## How to use our code
 
 ### Installation
