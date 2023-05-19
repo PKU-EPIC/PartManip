@@ -21,7 +21,7 @@ scripts/
 Pointnet2_PyTorch/
 ckpt/
 expert_data/
-log*
+# log*
 wand*
 logs*/
 /scratch/genghaoran/RL-Pose/PoseOrientedGym/logs
