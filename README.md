@@ -76,7 +76,7 @@ python gym/train.py --task=FrankaPoseCabinetBase --algo=pregrasp_ppo \
 --target open --category drawer --minibatches 2 --nsteps 5 --noptepochs 8 \
 --canonical_space handle --pregrasp part --obs state --eval_round 3 --eval_freq 10 \
 --action_normalization clip --control ik_abs_axis_angle --asset_num 200_40_40_5 \
---test --ckpt xxxx.ckpt
+--test --ckpt xxxx.tar
 ```
 
 ### Training Curve
