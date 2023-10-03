@@ -1,0 +1,76 @@
+log:
+  save_name: test
+  group_name: test
+  use_wandb: True
+
+task:
+  randomize: False
+  target_state: open
+  target_part_category: door # door or drawer
+  task: open               #grasp or open
+  openProportion: 0.53
+  target_part_initial_open_proportion: 0.53
+  use_new_dist_rwd: True
+  use_soft_dist: False
+  use_finger_dist: False
+  use_bbox: False
+  two_stage: True
+  grasp_first: False
+  pregrasp_steps: 1500
+  use_qpose_state: True
+  use_first_bbox: pt #pt or gt or None
+
+  rot_coef: 0.2
+  handle_coef: 2
+  vel_coef: 1
+  dist_coef: 1
+  tip_coef: 10
+  close_coef: 3
+
+env:
+  env_name: base_env
+  driveMode: "ik_rela"
+  maxEpisodeLength: 200
+  AssetNumTrain: 200
+  AssetNumValIntra: 30
+  AssetNumValInter: 30
+  EnvPerAsset: 1
+  numObservations: 76 # TODO
+  enableCameraSensors: False
+  usePartRecoverForce: False
+  robotName: Frankafixed_newtips
+  franka_scale: 2
+  envSpacing: 3.0
+  use_easy_data: False
+  useGtBbox: True
+  usePreGraspPose: True
+  # driveMode: "maniksill" # option "pos" "effort" "ik"
+  
+  asset:
+    assetRoot: assets
+    randomAsset: False
+
+    robot:
+      Frankafixed:
+        filePath: franka_description/robots/franka_panda.urdf
+        numActions: 9
+        ikNumActions: 9
+      FrankaSlider:
+        filePath: franka_description/robots/franka_panda_slider.urdf
+        numActions: 11
+        ikNumActions: 9
+      Frankafixed_newtips:
+        filePath: franka_description/robots/franka_panda_new.urdf
+        numActions: 9
+        ikNumActions: 9
+      FrankaSlider_newtips:
+        filePath: franka_description/robots/franka_panda_slider_new.urdf
+        numActions: 11
+        ikNumActions: 9
+      FrankaSliderXYZ:
+        filePath: franka_description/robots/franka_panda_slider_z.urdf
+        numActions: 12
+        ikNumActions: 9
+
+    result:
+      total: 0 # no use

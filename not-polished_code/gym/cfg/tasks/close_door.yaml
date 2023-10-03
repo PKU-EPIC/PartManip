@@ -1,0 +1,4 @@
+task: close_door
+
+maxEpisodeLength: 200  # reset after n steps 
+driveMode: ik   # action dim depend on the control mode

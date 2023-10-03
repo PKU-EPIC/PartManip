@@ -1,0 +1,21 @@
+BC_INIT: true
+DEMO_FILE: dapg/dapg/demonstrations/shapenet_pointcloud_mug_traj_0.8_new_select.pkl
+ENV_NAME: shapenet_pointcloud-mug-0.8
+JOB_DIR: /data/kriswu/kris-rl/
+JOB_NAME: ilad_ilad_exp
+NUM_ITER: 1500
+POLICY_INIT_LOG_STD: 0.0
+POLICY_WS:
+- 32
+- 32
+RNG_SEED: 500
+SAVE_FREQ: 100
+USE_LFA: true
+LFA_EVAL_ADV: true
+LFA_LAM0: 0.1
+LFA_LAM1: 0.99
+LFA_LAM2: 0.99
+LFA_LAM3: 0.001
+NUM_TRAJ: 200
+BC_FINETUNE: true
+FT_INTERVAL: 20

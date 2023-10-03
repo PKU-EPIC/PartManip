@@ -1,0 +1,71 @@
+seed: -1
+
+clip_observations: 5.0
+clip_relative_actions: 0.5
+clip_actions: 3.0
+gen_pc: False
+
+policy: # only works for MlpPolicy right now
+  pi_hid_sizes: [512, 512, 64]
+  vf_hid_sizes: [512, 512, 64]
+  activation: relu # can be elu, relu, selu, crelu, lrelu, tanh, sigmoid
+  feature_dim: 112
+  network_type: New
+  data_parallel: True
+  use_orthogonal_init : True    ###trick 8
+  use_pc: True
+  backbone_type: None
+  use_pretrain: True 
+  task_meta:
+    mask_dim: 3 # R, G, B, SEG,  #handle, part, gripper
+  Spconv: 
+    class_path: perception.models.backbone.PointGroup
+    ckpt_pth: ckpt/epoch_210_miou_70.98.ckpt
+    device: None
+    num_classes: 4
+    in_channels: 6
+    channels: [16, 32, 48, 64, 80, 96, 112]
+
+  canonicalize: True
+  canon_space: handle
+  use_residual_traj: False
+
+
+learn:
+  agent_name: Franka
+  test: False
+  resume: ''
+  save_interval: 200 # check for potential saves every this many iterations
+  checkpoint: -1
+  eval_round: 2
+  eval_freq: 50
+  print_log: True
+
+  # rollout params
+  max_iterations: 10000
+
+  # training params
+  # hidden_nodes: 512
+  # hidden_layer: 2
+  hidden_size: [512, 512, 64]
+
+  cliprange: 0.2
+  nsteps: 16
+  noptepochs: 2
+  nminibatches: 8 # this is per agent
+  replay_size: 5000
+  polyak: 0.99
+  learning_rate: 0.001
+  max_grad_norm: 1
+  ent_coef: 0.2
+  reward_scale: 1
+  batch_size: 32
+#  optim_stepsize: 1.e-3 # 3e-4 is default for single agent training with constant schedule
+#  schedule: adaptive # could be adaptive or linear or fixed
+#  desired_kl: 0.016
+  gamma: 0.99
+#  lam: 0.95
+#  init_noise_std: 0.8
+
+  log_interval: 1
+  asymmetric: False

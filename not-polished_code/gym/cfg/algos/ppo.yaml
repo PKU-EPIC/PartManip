@@ -1,0 +1,8 @@
+algo: ppo
+
+# training 
+max_iterations: 50000 # iteration num
+n_steps: 8    # use n_steps environment steps to sample data before update
+n_updates: 5    # update n times per data. is better than 1.
+n_minibatches: 8
+

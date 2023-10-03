@@ -1,0 +1,51 @@
+exp_name: debug
+### q
+pipeline_mode: only_rl #fixed_nerf-rl, nerf-rl, only_rl
+### q
+
+
+
+resume:     # load from ckpt
+test_only: False
+save_pose: False    # when val and test 
+save_video: True    # when val and test 
+
+seed: 1
+torch_deterministic: False
+
+# both rl_device and sim_device use the same one 
+device_type: 'cuda'
+device_id: 0      # gpu id
+graphics_device_id: -1 #default: {device_id}
+physics_engine: 'physx'
+headless: True
+
+log: 
+  mode: ['wandb', 'screen']   # wandb contains tensorboard
+  log_root: './logs'
+  group:    #default: {task_name}_{algo_name}
+  id:       #default: {exp_name}_seed{seed}  
+  wandb:
+    project: 'pose-rl'
+    entity: 'pose-rl'
+    
+
+sim:
+  substeps: 2
+  physx:
+    num_threads: 4 # Number of worker threads per scene used by PhysX - for CPU PhysX only.
+    solver_type: 1 # 0: pgs, 1: tgs
+    num_subscenes: 4 # Splits the simulation into N physics scenes and runs each one in a separate thread
+    num_position_iterations: 4  
+    num_velocity_iterations: 0
+    contact_offset: 0.002
+    rest_offset: 0.0
+    bounce_threshold_velocity: 0.2
+    max_depenetration_velocity: 1000.0
+    default_buffer_size_multiplier: 5.0
+  flex:   # useless
+    num_outer_iterations: 5
+    num_inner_iterations: 20
+    warm_start: 0.8
+    relaxation: 0.75 
+

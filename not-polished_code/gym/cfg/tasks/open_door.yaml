@@ -1,0 +1,30 @@
+task: open_door
+
+maxEpisodeLength: 200  # reset after n steps 
+
+obs_mode:   
+  normal_state: 15  # observation dim
+  oracle_state: 15  # observation dim
+  proprio_state: 9
+  depth_pc: 3072
+
+asset:
+  assetRoot: "assets"
+
+robot:
+  driveMode: ik   # action dim depend on the control mode
+  filePath: franka_description/robots/franka_panda_slider_new.urdf
+  numActions: 11
+  ikNumActions: 9
+
+
+clipObservations: 50.0
+clipActions: 1.0
+
+
+# random change object qpose when reset. important
+random_reset: True
+ 
+# not important
+controlFrequencyInv: 1
+envSpacing: 2.0       # interval space between two envs.

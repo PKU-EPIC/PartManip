@@ -1,0 +1,57 @@
+log:
+  save_name: test
+  group_name: test
+  use_wandb: True
+
+task:
+  randomize: False
+  target_state: open
+  target_part_category: door # door or drawer
+  task: open               #grasp or open
+  openProportion: 0.3
+  target_part_initial_open_proportion: 0.3
+  use_new_dist_rwd: True
+  use_soft_dist: True
+  use_finger_dist: False
+  use_bbox: True
+  two_stage: True
+
+  rot_coef: 0.5
+  handle_coef: 5
+  vel_coef: 1.5
+  dist_coef: 1
+  tip_coef: 4
+  close_coef: 3
+
+env:
+  env_name: base_env
+  driveMode: "ik"
+  maxEpisodeLength: 100
+  AssetNumTrain: 3
+  AssetNumValIntra: 2
+  AssetNumValInter: 3
+  EnvPerAsset: 2
+  numObservations: 82 # TODO
+  enableCameraSensors: False
+  usePartRecoverForce: False
+  robotName: FrankaSliderXYZ
+  franka_scale: 1.6
+  envSpacing: 2.0
+  # driveMode: "maniksill" # option "pos" "effort" "ik"
+  
+  asset:
+    assetRoot: assets
+    randomAsset: False
+
+    robot:
+      FrankaSlider:
+        filePath: franka_description/robots/franka_panda_slider.urdf
+        numActions: 11
+        ikNumActions: 9
+      FrankaSliderXYZ:
+        filePath: franka_description/robots/franka_panda_slider_z.urdf
+        numActions: 12
+        ikNumActions: 9
+
+    result:
+      total: 0 # no use
