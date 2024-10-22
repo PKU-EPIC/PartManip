@@ -1,8 +1,14 @@
-assets/
+
 ckpt/
+**/__pycache__
+logs/
+**/debug*
+
+logs
+
 # gym/
 unused/
-assets_/
+
 __pycache__/
 **/__pycache__/
 **/__pycache__
@@ -11,7 +17,7 @@ ManiSkill-Learn/
 isaacgym/
 *_raw*
 raw*
-assets*
+
 *.zip
 v-hacd/
 expert_data/

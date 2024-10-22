@@ -1,0 +1,37 @@
+algo: dagger
+
+# env related
+obs_mode: 'mesh_tsdf' # depth_tsdf, mesh_tsdf
+add_proprio_obs: True
+num_envs: 16
+
+# training 
+max_iterations: 10000 # iteration num
+n_steps: 1    # use n_steps environment steps to sample data before update
+n_updates: 2    # update n times per data. 3 can learn fast but maybe worse. Not sure if load pretrain model.
+n_minibatches: 16
+
+teacher: '/data1/jiayi/NerfRL/logs/ckpts/only_rl_grasp_cube_ppo/default_noSN_seed7928/model_70000.pth'
+offline_data_pth: 
+
+# evaluate, save models and logs
+eval_round: 5
+eval_frequence: 1000
+save_frequence: 1000
+
+# learning rate
+lr_schedule: fixed  # linear_decay is better than fixed
+lr: 5.e-5   
+
+# parameters
+sampler: 'random'  
+buf_size: 1600   # 2000 is certainly better than 500
+reward_reset: True
+
+# network structure. 
+model: 
+  action_std: 0.1
+  action_activate: tanh
+  network:
+    name: Conv3DNet 
+    activation: tanh

@@ -1,0 +1,28 @@
+algo: bc
+
+# env related
+obs_mode: 'mesh_tsdf'
+add_proprio_obs: True
+num_envs: 16
+
+# training 
+max_iterations: 1000 # iteration num
+n_minibatches: 50
+data_path: './logs/nerf_tsdf_notable'
+
+# evaluate, save models and logs
+eval_round: 3
+eval_frequence: 200
+save_frequence: 200
+
+# learning rate
+lr_schedule: step_decay  # fixed or linear_decay
+lr: 5.e-4   
+
+# network structure. Only support MLP now
+model: 
+  action_std: 0.0
+  action_activate: tanh
+  network:
+    name: Conv3DNet 
+    activation: tanh

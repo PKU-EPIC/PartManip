@@ -1,0 +1,46 @@
+exp_name: debug
+
+shm_pth: shm_v3.yaml
+resume: 
+pretrain: 
+test_only: False
+save_pose: False    # when val and test 
+save_video: True    # when val and test 
+
+seed: -1
+torch_deterministic: False
+
+# both rl_device and sim_device use the same one 
+device_type: 'cuda'
+device_id: 0      # gpu id
+graphics_device_id: -1 #default: {device_id}
+physics_engine: 'physx'
+headless: True
+
+log: 
+  mode: ['wandb', 'screen']   # wandb contains tensorboard
+  log_root: './logs'
+  group:    #default: {task_name}_{algo_name}
+  id:       #default: {exp_name}_seed{seed}  
+  wandb:
+    project: 'RL-Nerf'
+    entity: 'pose-rl'
+    
+
+sim:
+  substeps: 4
+  physx:
+    num_threads: 8 # Number of worker threads per scene used by PhysX - for CPU PhysX only.
+    solver_type: 1 # 0: pgs, 1: tgs
+    num_subscenes: 8 # Splits the simulation into N physics scenes and runs each one in a separate thread
+    num_position_iterations: 16  
+    num_velocity_iterations: 0
+    contact_offset: 0.005
+    rest_offset: 0.0
+    friction_offset_threshold: 0.01
+    friction_correlation_distance: 0.00625
+    bounce_threshold_velocity: 0.1
+    max_depenetration_velocity: 1.0
+    default_buffer_size_multiplier: 8.0
+    max_gpu_contact_pairs: 1048576  # 1024 * 1024
+

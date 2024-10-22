@@ -1,0 +1,44 @@
+task: grasp_cube
+
+maxEpisodeLength: 200  # reset after n steps
+add_mask: False # False
+explore_step: 40
+succ_value: 500
+
+obs_mode:   
+  normal_state: 37  # observation dim
+  proprio_state: 25
+  tsdf:
+    size: 0.5
+    resolution: 50
+    origin: [-0.25, -0.25, -0.0503]
+  depth_pc: 3072
+  depth_sparse: 4096
+  rgb_img: 27648 # 72*128*3
+  depth_img: 9216 # 72*128*3
+
+cam:
+  look_at: [0,0,0]
+  radius: 0.8
+
+asset:
+  assetRoot: "assets"
+
+robot:
+  name: 'franka'
+  dof: [0.6806, -0.2319, -0.6754, -2.4905, -0.1961,  2.2925, -0.6390, 0.0400, 0.0400]
+  root: [0., -0.5, 0., 0., 0., 0.707, 0.707]
+  driveMode: ik   # action dim depend on the control mode
+  assetFile: franka_panda_sdf
+
+clipObservations: 1000.0
+clipActions: 1.0
+
+# random change object pose when reset. important
+random_reset: True
+
+# not important
+controlFrequencyInv: 1
+envSpacing: 2.0       # interval space between two envs.
+
+

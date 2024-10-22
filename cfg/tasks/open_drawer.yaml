@@ -1,0 +1,44 @@
+task: open_drawer
+
+maxEpisodeLength: 200  # reset after n steps
+add_mask: False 
+explore_step: 40
+succ_value: 
+
+obs_mode:   
+  normal_state: 53  # observation dim
+  proprio_state: 0
+  tsdf:
+    size: 2
+    resolution: 50
+    origin: [-1, -1, 0.05]
+  depth_pc: 3072
+  depth_sparse: 4096
+
+cam:
+  look_at: [0.0, 0.0, 0.7]
+  radius: 1.5
+
+asset:
+  assetRoot: "assets"
+  splits: 'train' # choose from ['train', 'valInter', 'valIntra']
+
+robot:
+  name: 'franka'
+  dof: [0, 0, 0, -0.2724, -0.1511,  0.2898, -2.3792, -2.8973,  2.4690,  2.3973, 0.0400, 0.0400]
+  # dof: [0., 0., 0., 0., 0.,  0., 0., 0.0400, 0.0400]
+  root: [0.4, 0., 0., 0., 0., 1., 0.]
+  driveMode: ik   # action dim depend on the control mode
+  assetFile: franka_panda_sdf_mobile
+
+clipObservations: 1000.0
+clipActions: 1.0
+
+# random change object pose when reset. important
+random_reset: True
+ 
+# not important
+controlFrequencyInv: 2
+envSpacing: 2.0       # interval space between two envs.
+
+

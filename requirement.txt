@@ -1,0 +1,9 @@
+# isaacgym
+
+scikit-image
+trimesh
+wandb
+tensorboard
+opencv_python
+tqdm
+gymnasium

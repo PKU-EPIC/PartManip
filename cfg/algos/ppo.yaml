@@ -1,0 +1,47 @@
+algo: ppo
+
+# env related
+obs_mode: 'normal_state'
+add_proprio_obs: False
+num_envs: 2048 
+
+# training 
+max_iterations: 200000 # iteration num
+n_steps: 8    # use n_steps environment steps to sample data before update
+n_updates: 5    # update n times per data. is better than 1.
+n_minibatches: 8
+
+# evaluate, save models and logs
+eval_round: 1
+eval_frequence: 5000
+save_frequence: 5000
+
+# learning rate
+lr_schedule: fixed  
+lr: 5.e-5      
+# desired_kl: 0.01       # if > kl, stop training and collect data again. 
+desired_kl: 0.1       # if > kl, stop training and collect data again. 
+
+# parameters
+epsilon_clip: 0.2  # clip surrogate_loss
+gamma: 0.99     # reward discount. TODO check this
+lam: 0.95       # for GAE. 
+sampler: 'sequential'   # TODO
+
+# tricks
+tricks:
+  mini_adv_norm: False      # harmful
+  whole_adv_norm: False     # harmful
+  use_state_norm: True      
+  use_clipped_value_loss: False   # harmful
+  use_grad_clip: True            
+  max_grad_norm: 0.5        # just keep 0.5
+
+# network structure. 
+model: 
+  action_std: 0.5
+  action_activate: tanh
+  network:
+    name: MLP 
+    hid_dim: [512, 512, 512]
+    activation: tanh
