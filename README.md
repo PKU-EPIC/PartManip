@@ -47,12 +47,10 @@ pip install wandb tensorboard ipdb gym tqdm rich opencv_python pytorch3d pyparsi
 
 ### Training and Testing
 
-# Two-Finger Gripper Manipulation Tasks
-
 Use RL to finish manipulation tasks based on [Isaac Gym](https://github.com/NVIDIA-Omniverse/IsaacGymEnvs).
 
 
-### Train and Test
+#### Train and Test
 
 Basic command is 
 
@@ -68,7 +66,7 @@ python train.py --exp_name {$EXP} --algocfg {$ALGO} --taskcfg {$TASK} --device_i
 ```
 You can also overwrite any parameters in config file by adding ``` --KEY1.KEY2.KEY3 xxx```. See ```def add_cfg``` in  ```utils/config.py``` for more. 
 
-## Implemented Algorithms and Tasks
+### Implemented Algorithms and Tasks
 #### Algo: PPO 
 [OpenAI introduction](https://spinningup.openai.com/en/latest/algorithms/ppo.html)
 
