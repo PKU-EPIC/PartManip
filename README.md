@@ -19,6 +19,9 @@ This is the official repository of [**PartManip: Learning Cross-Category General
 
 For more information, please visit our [**project page**](https://pku-epic.github.io/PartManip/).
 
+## 💡 News
+- We use IsaacGym to implement a lightweight version of our algorithm with more robust reward and higher success rate. Previous version is now move to `prev` branch
+
 ## Overview
 ![overview](imgs/teaser.jpg)
 We introduce a large-scale cross-category part manipulation benchmark PartManip with diverse object datasets, realistic settings, and rich annotations. We propose a generalizable vision-based policy learning strategy and boost the performance of part-based object manipulation by a large margin, which can generalize to unseen object categories and novel objects in the real world.
