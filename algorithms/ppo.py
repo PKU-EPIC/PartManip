@@ -108,7 +108,7 @@ class ppo:
             self.actor_critic.load_state_dict(ckpt_dict["model_state_dict"])
             
             # # debug
-            # cri_ckpt_path = '/home/jiayichen/RLManip/logs/ckpts/grasp_cube_ppo/reset5_seed9859/model_180000.pth'
+            # cri_ckpt_path = './logs/ckpts/grasp_cube_ppo/reset5_seed9859/model_180000.pth'
             # cri_ckpt_dict= torch.load(cri_ckpt_path, map_location=self.device)
             # cri_dct = {}
             # for k in cri_ckpt_dict["model_state_dict"].keys():

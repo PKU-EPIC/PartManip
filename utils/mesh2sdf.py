@@ -163,7 +163,7 @@ class TSDFfromMesh:
             print(f'Preprocess mesh in {input_mesh_path} and save to {output_mesh_path}!')
             # NOTE If depth is too large, the detail will be better (e.g. 8), but may cause problems like double surface and noise point after MC.
             # If depth is too small (e.g. 3), the detail will miss.
-            os.system(f"/home/jiayichen/ManifoldPlus/build/manifold --input {input_mesh_path} --output {output_mesh_path} --depth 6")
+            os.system(f"./ManifoldPlus/build/manifold --input {input_mesh_path} --output {output_mesh_path} --depth 6")
         return 
 
     def merge_sdf_field(self):
