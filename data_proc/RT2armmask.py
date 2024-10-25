@@ -10,8 +10,8 @@ os.environ['PYOPENGL_PLATFORM'] = 'egl'
 scene_id = 0
 step_id = 70
 cam_id = 2
-cam_path = f'/data1/DynamicRLNeRF/data/grasping_cube_train_0202_mitsuba_rand/scenes/scene_{str(scene_id).zfill(5)}/step_{str(step_id).zfill(5)}/camera_pose.npy'
-pose_path = f'/home/jiayichen/RL-NeRF/NerfRL/logs/scene_pose/grasp_cube_ppo/debug_seed6786/Iter40000/{step_id}.npy'
+cam_path = f'./data/grasping_cube_train_0202_mitsuba_rand/scenes/scene_{str(scene_id).zfill(5)}/step_{str(step_id).zfill(5)}/camera_pose.npy'
+pose_path = f'./logs/scene_pose/grasp_cube_ppo/debug_seed6786/Iter40000/{step_id}.npy'
 hand_base_path = '../assets/franka_description/meshes/visual'
 
 
@@ -72,7 +72,7 @@ r = pyrender.OffscreenRenderer(viewport_width=640,
 
 seg, depth = r.render(scene, flags=pyrender.constants.RenderFlags.SEG, seg_node_map=seg_node_map)
 # seg, depth = r.render(scene)
-rgb = cv2.imread(f'/data1/DynamicRLNeRF/data/grasping_cube_train_0202_mitsuba_rand/scenes/scene_{str(scene_id).zfill(5)}/step_{str(step_id).zfill(5)}/rgb/{str(cam_id).zfill(4)}.png')
+rgb = cv2.imread(f'./data/grasping_cube_train_0202_mitsuba_rand/scenes/scene_{str(scene_id).zfill(5)}/step_{str(step_id).zfill(5)}/rgb/{str(cam_id).zfill(4)}.png')
 cv2.imwrite(f'{str(cam_id).zfill(4)}.jpg', seg)
 cv2.imwrite('debug.jpg', seg*rgb)
 # cv2.imwrite('debug_rgb.jpg', rgb)

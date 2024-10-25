@@ -3,7 +3,7 @@ import trimesh
 from os.path import join as pjoin
 
 # saved pose path. each npy files is collected in each time step, e.g. 100.npy is collected in 100 step.
-pose_path = '/home/jiayichen/RL-NeRF/NerfRL/logs/scene_pose/grasp_cube_ppo/debug_seed6786/Iter40000/100.npy'
+pose_path = './logs/scene_pose/grasp_cube_ppo/debug_seed6786/Iter40000/100.npy'
 pose_dict = np.load(pose_path, allow_pickle=True).item()
 
 # each npy files contain 2048 scene collected by paralleled environments

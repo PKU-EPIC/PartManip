@@ -40,13 +40,13 @@ class TSDFfromMesh:
         self.pre_store_sdf_voxel_size = 0.002 
         self.sdf_dict_list = []
 
-        hand_base_path = '/data1/jiayi/NerfRL/assets/franka_description'
+        hand_base_path = './assets/franka_description'
         self.load_franka(hand_base_path)
 
         # load obj
-        obj_mesh_path = '/data1/jiayi/NerfRL/assets/objs/cube/cube.obj' 
-        obj_sdf_path = '/data1/jiayi/NerfRL/assets/objs/cube/sdf.npy'
-        # obj_sdf_path = '/home/qiyudai/Code/DynamicRLNeRF/RL-NeRF/NerfRL/assets/objs/cube/sdf'
+        obj_mesh_path = './assets/objs/cube/cube.obj' 
+        obj_sdf_path = './assets/objs/cube/sdf.npy'
+        
         self.load_sdf(obj_sdf_path, obj_mesh_path)
 
         if self.parallel:
@@ -56,7 +56,7 @@ class TSDFfromMesh:
     ### q
     def initialize_sdf(self, nerf_pred_tsdf):
         '''
-        nerf_pred_tsdf: [b, n]
+        pred_tsdf: [b, n]
         '''
         self.init_tsdf = torch.tensor(nerf_pred_tsdf, device=self.device) * self.sdf_trunc
     ### q
@@ -362,7 +362,7 @@ if __name__ == '__main__':
     st = 0
     for i in range(count):
         # load pose file and query sdf in the scene
-        pose_path = f'/home/jiayichen/NerfRL/logs/scene_pose/grasp_cube_state_ppo/control_tip_large_lift_reward_seed8177/Iter9000/{80+i}.npy'
+        pose_path = f'./logs/scene_pose/grasp_cube_state_ppo/control_tip_large_lift_reward_seed8177/Iter9000/{80+i}.npy'
         pose_dict = np.load(pose_path, allow_pickle=True).item()
         pose_R = torch.tensor(pose_dict['rot'][:num_envs], device=device)   # [b, m, 3, 3] b: env num, m: mesh num
         pose_T = torch.tensor(pose_dict['pos'][:num_envs], device=device)   # [b, m, 3]

@@ -23,7 +23,7 @@ log:
   group:    #default: {task_name}_{algo_name}
   id:       #default: {exp_name}_seed{seed}  
   wandb:
-    project: 'RL-Nerf'
+    project: 'partmanip'
     entity: 'pose-rl'
     
 

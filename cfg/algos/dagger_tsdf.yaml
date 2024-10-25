@@ -11,7 +11,7 @@ n_steps: 1    # use n_steps environment steps to sample data before update
 n_updates: 2    # update n times per data. 3 can learn fast but maybe worse. Not sure if load pretrain model.
 n_minibatches: 16
 
-teacher: '/data1/jiayi/NerfRL/logs/ckpts/only_rl_grasp_cube_ppo/default_noSN_seed7928/model_70000.pth'
+teacher: '<path to>/model_70000.pth'
 offline_data_pth: 
 
 # evaluate, save models and logs
